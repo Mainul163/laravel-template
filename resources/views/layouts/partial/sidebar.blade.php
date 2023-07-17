@@ -633,11 +633,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+
                         <i class="nav-icon far fa-circle text-info"></i>
-                        <p>Informational</p>
+                        <p>Log Out</p>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
