@@ -37,6 +37,10 @@
     <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
+        integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -179,6 +183,13 @@
     <!-- AdminLTE for demo purposes -->
     <script src="../../dist/js/demo.js"></script>
     <!-- Page specific script -->
+
+    <!-- toster -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
     $(function() {
         $("#example1").DataTable({
@@ -197,6 +208,28 @@
             "responsive": true,
         });
     });
+    </script>
+    <script>
+    @if(Session::has('messege'))
+    var type = "{{session::get('alert-type','info')}}"
+    switch (type) {
+        case 'info':
+            toaster.info("{{Session::get('messege')}}");
+            break;
+
+        case 'success':
+            toaster.success("{{Session::get('messege')}}");
+            break;
+
+        case 'warning':
+            toaster.warning("{{Session::get('messege')}}");
+            break;
+
+        case 'error':
+            toaster.error("{{Session::get('messege')}}");
+            break;
+    }
+    @endif
     </script>
 </body>
 

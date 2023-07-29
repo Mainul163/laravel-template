@@ -28,6 +28,8 @@ class CategoriesController extends Controller
     public function create()
     {
         //
+
+        return view('category.create');
     }
 
     /**
@@ -39,6 +41,22 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required',
+            'size' => 'required',
+            'price' => 'required',
+         
+        ]);
+
+        $category=new Category;
+
+        $category->name=$request->name;
+        $category->size=$request->size;
+        $category->price=$request->price;
+ 
+        $category->save();
+        $notification=array('messege'=>"category Inserted !","alert-type"=>"success");
+        return redirect()->back()->with($notification);
     }
 
     /**
