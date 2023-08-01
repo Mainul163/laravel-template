@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\CategoriesController;
+use App\Http\Controllers\admin\subcategoriesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,3 +22,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('category', CategoriesController::class);
+Route::resource('subcategory', subcategoriesController::class);

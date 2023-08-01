@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Category;
-class CategoriesController extends Controller
+use App\Models\Subcategory;
+class subcategoriesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,13 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
-        $category=Category::all();
-        return view('category.index',compact('category'));
+        //only join table er je data ta dorkar sheitar jonno select use korte hobe. and json er jonno json data
+        // $data=DB::table('sububcategories')->join('categories','sububcategories.category_id','categories.id')->select('categories.name','sububcategories.*')->get();
+        // return response()->json($data);
+
+
+        $data=Subcategory::all();
+        return view('subcategory.index',compact('data'));
     }
 
     /**
@@ -28,8 +33,8 @@ class CategoriesController extends Controller
     public function create()
     {
         //
-
-        return view('category.create');
+        $category=Category::all();
+        return view('subcategory.create',compact('category'));
     }
 
     /**
@@ -42,21 +47,17 @@ class CategoriesController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required',
-            'size' => 'required',
-            'price' => 'required',
+            'category_id' => 'required',
+            'subcategory_name' => 'required',
+         
          
         ]);
-
-        $category=new Category;
-
-        $category->name=$request->name;
-        $category->size=$request->size;
-        $category->price=$request->price;
- 
-        $category->save();
-        $notification=array('messege'=>"category Inserted !","alert-type"=>"success");
+        $subcategory=new Subcategory;
+        $subcategory->category_id=$request->category_id;
+        $subcategory->subcategory_name=$request->subcategory_name;
+        $subcategory->save();
         return redirect()->back()->with('success','successfully inserted');
+       
     }
 
     /**

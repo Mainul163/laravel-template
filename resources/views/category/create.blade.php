@@ -12,6 +12,11 @@
                     <br>
                     <br>
                     <br>
+                    @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                    @endif
                     <form action="{{route('category.store')}}" method='post'>
                         <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                         <div class="mb-3">

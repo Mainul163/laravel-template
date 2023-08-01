@@ -111,21 +111,21 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
-                            Forms
+                            Subcategory
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pages/forms/general.html" class="nav-link">
+                            <a href="{{url('subcategory')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>General Elements</p>
+                                <p>All Subcategory</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pages/forms/advanced.html" class="nav-link">
+                            <a href="{{route('subcategory.create')}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Advanced Elements</p>
+                                <p>Create Subcategory</p>
                             </a>
                         </li>
                         <li class="nav-item">
